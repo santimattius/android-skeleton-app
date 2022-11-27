@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Android Skeleton</string>
+    <string name="message_error">Ha ocurrido un error</string>
+</resources>
