@@ -30,6 +30,24 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".features.game.ui.GameActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AndroidSkeleton">
+
+            <intent-filter android:label="@string/detail_game">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="app"
+                    android:host="game" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
     </application>
 
 </manifest>

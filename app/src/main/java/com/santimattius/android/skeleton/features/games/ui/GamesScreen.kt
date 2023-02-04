@@ -31,14 +31,15 @@ import com.santimattius.android.skeleton.features.games.domain.Game
 fun GamesRoute(
     modifier: Modifier = Modifier,
     gamesViewModel: GamesViewModel = hiltViewModel(),
+    onGameClick: (Game) -> Unit = {},
 ) {
     val state by gamesViewModel.state.collectAsStateWithLifecycle()
-    GamesScreen(modifier = modifier, state = state)
+    GamesScreen(modifier = modifier, state = state, onItemClick = onGameClick)
 }
 
 @ExperimentalCoilApi
 @Composable
-fun GamesScreen(modifier: Modifier, state: GamesUiState) {
+fun GamesScreen(modifier: Modifier, state: GamesUiState, onItemClick: (Game) -> Unit = {}) {
     when (state) {
         Loading -> Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
@@ -46,7 +47,7 @@ fun GamesScreen(modifier: Modifier, state: GamesUiState) {
         Failed -> Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(text = stringResource(id = R.string.message_error))
         }
-        is Loaded -> GamesList(games = state.data)
+        is Loaded -> GamesList(games = state.data, onClick = onItemClick)
     }
 }
 
