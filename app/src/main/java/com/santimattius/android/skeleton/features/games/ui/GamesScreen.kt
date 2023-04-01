@@ -22,7 +22,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.SubcomposeAsyncImage
 import com.santimattius.android.skeleton.R
-import com.santimattius.android.skeleton.features.games.domain.Game
+import com.santimattius.android.skeleton.features.shared.domain.Game
 
 
 @ExperimentalCoilApi

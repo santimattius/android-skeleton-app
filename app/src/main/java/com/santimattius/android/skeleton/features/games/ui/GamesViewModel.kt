@@ -2,7 +2,7 @@ package com.santimattius.android.skeleton.features.games.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.santimattius.android.skeleton.features.games.data.repositories.GameRepository
+import com.santimattius.android.skeleton.features.shared.data.repositories.GameRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow

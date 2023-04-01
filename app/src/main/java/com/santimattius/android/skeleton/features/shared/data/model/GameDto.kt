@@ -1,4 +1,4 @@
-package com.santimattius.android.skeleton.features.games.data.model
+package com.santimattius.android.skeleton.features.shared.data.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -11,6 +11,8 @@ data class GameDto(
     val thumbnail: String,
     @SerializedName("short_description")
     val shortDescription: String,
+    @SerializedName("description")
+    val description: String,
     @SerializedName("genre")
     val genre: String,
     @SerializedName("platform")

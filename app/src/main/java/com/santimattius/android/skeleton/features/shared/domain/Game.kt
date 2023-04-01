@@ -1,4 +1,4 @@
-package com.santimattius.android.skeleton.features.games.domain
+package com.santimattius.android.skeleton.features.shared.domain
 
 data class Game(
     val id: Long,

@@ -1,9 +1,9 @@
 package com.santimattius.android.skeleton.di
 
 import com.santimattius.android.skeleton.core.network.ServiceCreator
-import com.santimattius.android.skeleton.features.games.data.datasource.FreeToGameDataSource
-import com.santimattius.android.skeleton.features.games.data.datasource.NetworkDataSource
-import com.santimattius.android.skeleton.features.games.data.repositories.GameRepository
+import com.santimattius.android.skeleton.features.shared.data.datasource.FreeToGameDataSource
+import com.santimattius.android.skeleton.features.shared.data.datasource.NetworkDataSource
+import com.santimattius.android.skeleton.features.shared.data.repositories.GameRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,6 +19,8 @@ class DataModule {
     }
 
     @Provides
-    fun provideGameRepository(networkDataSource: NetworkDataSource) = GameRepository(
-        networkDataSource = networkDataSource)
+    fun provideGameRepository(networkDataSource: NetworkDataSource): GameRepository =
+        GameRepository(
+            networkDataSource = networkDataSource
+        )
 }

@@ -2,36 +2,59 @@ package com.santimattius.android.skeleton.features.game.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.SubcomposeAsyncImage
 import com.santimattius.android.skeleton.R
+import com.santimattius.android.skeleton.core.ui.Center
+import com.santimattius.android.skeleton.features.shared.domain.Game
 
 private const val ASPECT_WIDTH = 16
 private const val ASPECT_HEIGHT = 8
 
+@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun GameDetailRoute(
     viewModel: GameDetailViewModel = hiltViewModel(),
 ) {
-    GameDetailPage()
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    GameDetailPage(state = state)
 }
 
 @Composable
-private fun GameDetailPage() {
+private fun GameDetailPage(modifier: Modifier = Modifier, state: GameDetailUiState) {
+    when (state) {
+        Loading -> Center(modifier = modifier.fillMaxSize()) {
+            CircularProgressIndicator()
+        }
+        Failed -> Center(modifier = modifier.fillMaxSize()) {
+            Text(text = stringResource(id = R.string.message_error))
+        }
+        is Loaded -> GameDetail(state.data)
+    }
+
+}
+
+@Composable
+private fun GameDetail(data: Game) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
         SubcomposeAsyncImage(
-            model = "https://www.freetogame.com/g/452/thumbnail.jpg",
-            contentDescription = "game.title",
+            model = data.thumbnail,
+            contentDescription = data.title,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
@@ -40,7 +63,7 @@ private fun GameDetailPage() {
         )
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.medium)))
         Text(
-            text = "character.name",
+            text = data.title,
             style = MaterialTheme.typography.h4,
             modifier = Modifier.padding(
                 horizontal = dimensionResource(R.dimen.medium),
@@ -49,9 +72,7 @@ private fun GameDetailPage() {
         )
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.small)))
         Text(
-            text = """
-                            Call of Duty: Warzone is both a standalone free-to-play battle royale and modes accessible via Call of Duty: Modern Warfare. Warzone features two modes — the general 150-player battle royle, and “Plunder”. The latter mode is described as a “race to deposit the most Cash”. In both modes players can both earn and loot cash to be used when purchasing in-match equipment, field upgrades, and more. Both cash and XP are earned in a variety of ways, including completing contracts.\r\n\r\nAn interesting feature of the game is one that allows players who have been killed in a match to rejoin it by winning a 1v1 match against other felled players in the Gulag.\r\n\r\nOf course, being a battle royale, the game does offer a battle pass. The pass offers players new weapons, playable characters, Call of Duty points, blueprints, and more. Players can also earn plenty of new items by completing objectives offered with the pass.
-                        """.trimIndent(),
+            text = data.description,
             textAlign = TextAlign.Start,
             style = MaterialTheme.typography.body1,
             modifier = Modifier

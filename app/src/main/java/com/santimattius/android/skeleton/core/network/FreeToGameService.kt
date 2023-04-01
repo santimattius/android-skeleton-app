@@ -1,6 +1,6 @@
 package com.santimattius.android.skeleton.core.network
 
-import com.santimattius.android.skeleton.features.games.data.model.GameDto
+import com.santimattius.android.skeleton.features.shared.data.model.GameDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,4 +11,9 @@ interface FreeToGameService {
         @Query("platform") platform: String,
         @Query("category") category: String,
     ): List<GameDto>
+
+    @GET("games")
+    suspend fun get(
+        @Query("id") id: Long,
+    ): GameDto
 }

@@ -1,6 +1,6 @@
 package com.santimattius.android.skeleton.features.games.ui
 
-import com.santimattius.android.skeleton.features.games.domain.Game
+import com.santimattius.android.skeleton.features.shared.domain.Game
 
 sealed interface GamesUiState
 
