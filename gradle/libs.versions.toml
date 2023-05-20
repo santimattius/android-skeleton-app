@@ -3,6 +3,8 @@
 kotlin = "1.7.10"
 compose = "1.3.1"
 activityCompose = "1.6.1"
+navigationCompose = "2.5.3"
+acompanistNavigation = "0.31.2-alpha"
 coreKtx = "1.9.0"
 junit = "4.13.2"
 junitExt = "1.1.4"
@@ -27,6 +29,10 @@ compose_ui_test_manifest = { module = "androidx.compose.ui:ui-test-manifest", ve
 compose_ui_test_junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 # Activity
 activity_compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+# Navihation
+navigation_compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+# Acompanist
+acompanist_navigation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "acompanistNavigation" }
 # Lifecycle
 lifecycle_runtime_ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 lifecycle_viewmodel_compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
@@ -37,7 +43,7 @@ retrofit_gson = { module = "com.squareup.retrofit2:converter-gson", version.ref 
 # Moshi
 gson_core = { module = "com.google.code.gson:gson", version.ref = "gson" }
 # Coil
-coil_core = {module = "io.coil-kt:coil-compose", version.ref = "coil"}
+coil_core = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 # Coroutines
 coroutine_core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutine" }
 coroutine_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }

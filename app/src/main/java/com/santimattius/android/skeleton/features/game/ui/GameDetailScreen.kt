@@ -1,7 +1,13 @@
 package com.santimattius.android.skeleton.features.game.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -14,7 +20,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.SubcomposeAsyncImage
 import com.santimattius.android.skeleton.R
@@ -24,7 +29,6 @@ import com.santimattius.android.skeleton.features.shared.domain.Game
 private const val ASPECT_WIDTH = 16
 private const val ASPECT_HEIGHT = 8
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun GameDetailRoute(
     viewModel: GameDetailViewModel = hiltViewModel(),
@@ -39,9 +43,11 @@ private fun GameDetailPage(modifier: Modifier = Modifier, state: GameDetailUiSta
         Loading -> Center(modifier = modifier.fillMaxSize()) {
             CircularProgressIndicator()
         }
+
         Failed -> Center(modifier = modifier.fillMaxSize()) {
             Text(text = stringResource(id = R.string.message_error))
         }
+
         is Loaded -> GameDetail(state.data)
     }
 

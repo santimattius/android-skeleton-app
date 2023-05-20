@@ -2,7 +2,12 @@ package com.santimattius.android.skeleton.features.games.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -17,7 +22,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.SubcomposeAsyncImage
@@ -25,8 +29,7 @@ import com.santimattius.android.skeleton.R
 import com.santimattius.android.skeleton.features.shared.domain.Game
 
 
-@ExperimentalCoilApi
-@ExperimentalLifecycleComposeApi
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun GamesRoute(
     modifier: Modifier = Modifier,
@@ -44,9 +47,11 @@ fun GamesScreen(modifier: Modifier, state: GamesUiState, onItemClick: (Game) -> 
         Loading -> Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
         }
+
         Failed -> Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(text = stringResource(id = R.string.message_error))
         }
+
         is Loaded -> GamesList(games = state.data, onClick = onItemClick)
     }
 }

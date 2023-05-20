@@ -17,7 +17,7 @@
         android:theme="@style/Theme.AndroidSkeleton"
         tools:targetApi="31">
         <activity
-            android:name=".features.games.ui.GamesActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AndroidSkeleton">
             <intent-filter>
