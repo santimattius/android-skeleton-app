@@ -56,6 +56,7 @@ dependencies {
     implementation libs.lifecycle.runtime.compose
 
     implementation libs.bundles.compose
+    implementation libs.navigation.compose
     debugImplementation libs.bundles.compose.debug
 
     implementation libs.bundles.coroutine
@@ -67,6 +68,8 @@ dependencies {
     kapt libs.hilt.compiler
 
     implementation libs.coil.core
+
+    implementation libs.acompanist.navigation
 
     testImplementation libs.junit
 
