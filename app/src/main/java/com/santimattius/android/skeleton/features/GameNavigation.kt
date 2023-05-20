@@ -13,7 +13,7 @@ fun NavGraphBuilder.gameNav(navController: NavController, width: Int) {
         startDestination = NavCommand.ContentType(Features.GAMES).route,
         route = Features.GAMES.route
     ) {
-        gamesNav(width)
+        gamesNav(navController = navController, width = width)
         gameDetailNav(width = width)
     }
 }

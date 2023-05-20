@@ -12,7 +12,7 @@ interface FreeToGameService {
         @Query("category") category: String,
     ): List<GameDto>
 
-    @GET("games")
+    @GET("game")
     suspend fun get(
         @Query("id") id: Long,
     ): GameDto

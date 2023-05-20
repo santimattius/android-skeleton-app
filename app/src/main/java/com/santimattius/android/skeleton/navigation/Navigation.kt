@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.santimattius.android.skeleton.features.gameNav
 
 const val TWEEN_ANIM_DURATION = 1000
 
@@ -16,10 +17,9 @@ fun Navigation(
 ) {
     BoxWithConstraints {
         AnimatedNavHost(
-            navController = navController,
-            startDestination = Features.GAMES.route
+            navController = navController, startDestination = Features.GAMES.route
         ) {
-
+            gameNav(navController, constraints.maxWidth)
         }
     }
 }

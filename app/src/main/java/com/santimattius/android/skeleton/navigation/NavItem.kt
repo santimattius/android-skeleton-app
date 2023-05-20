@@ -21,7 +21,7 @@ sealed class NavCommand(
         "detail",
         listOf(NavArg.ItemId)
     ) {
-        fun createRoute(itemId: Int) = "${feature.route}/$subRoute/$itemId"
+        fun createRoute(itemId: Long) = "${feature.route}/$subRoute/$itemId"
     }
 
     val route = run {
@@ -39,5 +39,5 @@ sealed class NavCommand(
 }
 
 enum class NavArg(val key: String, val navType: NavType<*>) {
-    ItemId("id", NavType.IntType)
+    ItemId("id", NavType.LongType)
 }
